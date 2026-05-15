@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栖心 - 卸下精装人设 告别容貌生活焦虑</title>
+    <meta name="description" content="栖心APP，拒绝朋友圈精致内卷，接纳真实自我，缓解容貌焦虑与生活社交焦虑">
+    <meta name="referrer" content="no-referrer" />
+    <!-- 纯正手写风格字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            background:#f5f5f7;
+            color:#1d1d1f;
+            line-height:1.7;
+            /* 全局正文手写字体 */
+            font-family: 'ZCOOL KuaiLe', cursive;
+        }
+        /* 标题导航按钮保留简约字体 */
+        h1,h2,h3,h4,.logo-text,.btn-apple,.nav-menu a{
+            font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+        }
+        .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+        nav{background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);position:fixed;width:100%;top:0;z-index:999;padding:16px 0;border-bottom:1px solid #e8e8ed;}
+        .nav-box{display:flex;justify-content:space-between;align-items:center;}
+        .site-logo{display:flex;align-items:center;gap:10px;}
+        .ins-logo-icon{width:36px;height:36px;border-radius:12px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:18px;}
+        .logo-text{font-size:22px;font-weight:600;color:#000;letter-spacing:1px;}
+        .nav-menu a{margin-left:35px;text-decoration:none;color:#424245;font-size:15px;transition:0.3s;}
+        .nav-menu a:hover{color:#0071e3;}
+
+        /* 首屏轮播样式 1.5秒切换 */
+        .banner{padding:160px 0 100px;display:flex;align-items:center;gap:60px;flex-wrap:wrap;}
+        .banner-text{flex:1;min-width:320px;position:relative;z-index:2;}
+        .banner-text h1{font-size:48px;font-weight:600;margin-bottom:20px;line-height:1.2;}
+        .banner-text p{font-size:18px;color:#6e6e73;margin-bottom:35px;max-width:500px;}
+        .btn-apple{display:inline-block;background:#0071e3;color:#fff;padding:14px 32px;border-radius:980px;text-decoration:none;font-size:16px;font-weight:500;transition:0.3s;}
+        .btn-apple:hover{background:#0077ed;}
+        .banner-img{flex:1;min-width:320px;text-align:center;position:relative;}
+        .slide-box{width:320px;height:520px;border-radius:40px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+        .slide-wrap{width:calc(320px * 5);height:100%;display:flex;transition:0.5s ease;}
+        .slide-item{width:320px;height:520px;}
+        .slide-item img{width:100%;height:100%;object-fit:cover;}
+        .slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:35px;height:35px;border-radius:50%;background:rgba(255,255,255,0.6);border:none;font-size:18px;cursor:pointer;z-index:10;}
+        .prev{left:10px;}
+        .next{right:10px;}
+
+        .soft-pic{width:100%;max-width:500px;margin:30px auto;border-radius:18px;opacity:0.88;box-shadow:0 6px 18px rgba(0,0,0,0.06);}
+        .float-left-pic{float:left;width:320px;margin:0 30px 20px 0;border-radius:18px;opacity:0.88;}
+        .float-right-pic{float:right;width:320px;margin:0 0 20px 30px;border-radius:18px;opacity:0.88;}
+        .clear-float{clear:both;}
+
+        .idea{padding:80px 0;background:#fff;overflow:hidden;}
+        .title{text-align:center;font-size:36px;font-weight:600;margin-bottom:15px;}
+        .sub-title{text-align:center;color:#6e6e73;font-size:17px;margin-bottom:60px;}
+        .idea-content{max-width:800px;margin:0 auto;font-size:17px;color:#424245;line-height:1.8;}
+
+        /* 极淡蒙版，背景生活抓拍图清晰展示 */
+        .function{
+            padding:80px 0;
+            background:
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                url(https://picsum.photos/id/1067/1600/900) center center / cover no-repeat fixed;
+        }
+        .function .title,.function .sub-title{color:#fff;}
+        .func-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:40px;}
+        .func-card{background:rgba(255,255,255,0.94);padding:35px 25px;border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:0.3s;}
+        .func-card:hover{transform:translateY(-6px);}
+        .func-card h3{font-size:20px;margin-bottom:12px;color:#1d1d1f;}
+        .func-card p{color:#6e6e73;font-size:15px;}
+
+        .app-ui{padding:80px 0;background:#fff;overflow:hidden;}
+        .ui-box{max-width:900px;margin:0 auto;background:#fafafa;padding:40px;border-radius:24px;}
+        .ui-item{margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid #eee;}
+        .ui-item h4{font-size:19px;margin-bottom:8px;}
+        .ui-item p{color:#555;font-size:15px;}
+
+        .download{padding:90px 0;text-align:center;background:#f5f5f7;}
+        .download p{margin:20px 0 30px;color:#6e6e73;}
+        footer{padding:40px 0;text-align:center;color:#86868b;font-size:14px;border-top:1px solid #e8e8ed;}
+
+        @media(max-width:768px){
+            .nav-menu{display:none;}
+            .banner-text h1{font-size:32px;}
+            .title{font-size:28px;}
+            .float-left-pic,.float-right-pic{float:none;width:100%;margin:20px 0;}
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-box">
+            <div class="site-logo">
+                <div class="ins-logo-icon">栖</div>
+                <span class="logo-text">栖心 RELAX</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home">首页</a>
+                <a href="#function">核心功能</a>
+                <a href="#ui">界面布局</a>
+                <a href="#idea">治愈理念</a>
+                <a href="#download">立即下载</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首屏1.5秒自动轮播+手动翻页 -->
+    <section class="banner container" id="home">
+        <div class="banner-text">
+            <h1>卸下精装人设<br>告别容貌与生活焦虑</h1>
+            <p>拒绝滤镜伪装，远离社交内卷，不必刻意精致，接纳平凡普通，在这里做最真实自在的自己</p>
+            <a href="#download" class="btn-apple">前往App Store预约下载</a>
+        </div>
+        <div class="banner-img">
+            <div class="slide-box">
+                <div class="slide-wrap" id="slideWrap">
+                    <div class="slide-item"><img src="https://picsum.photos/id/64/320/520" alt="原生素颜日常自拍"></div>
+                    <div class="slide-item"><img src="https://picsum.photos/id/169/320/520" alt="下午茶随性生活抓拍"></div>
+                    <div class="slide-item"><img src="https://picsum.photos/id/226/320/520" alt="好友聚会真实合影"></div>
+                    <div class="slide-item"><img src="https://picsum.photos/id/176/320/520" alt="户外运动随性抓拍"></div>
+                    <div class="slide-item"><img src="https://picsum.photos/id/271/320/520" alt="居家松弛日常记录"></div>
+                </div>
+                <button class="slide-btn prev" id="prevBtn">&lt;</button>
+                <button class="slide-btn next" id="nextBtn">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="idea" id="idea">
+        <div class="container">
+            <h2 class="title">品牌治愈理念</h2>
+            <p class="sub-title">打破朋友圈虚假精致内耗</p>
+            <img class="float-left-pic" src="https://picsum.photos/id/431/400/300" alt="悠闲下午茶日常分享抓拍">
+            <div class="idea-content">
+                当下多数人深陷社交焦虑，为迎合他人眼光精心修饰容貌、刻意打造高端精致生活，长期处于伪装疲惫状态，滋生严重容貌焦虑、生活攀比焦虑。
+                <br><br>
+                栖心以「真实、松弛、自愈」为核心，摒弃一切网红式精致包装，打造无攀比、无颜值评判、无社交压力的纯净精神自留地，帮助用户放下心理负担，坦然接纳不完美，回归轻松平和的生活状态。
+            </div>
+            <div class="clear-float"></div>
+        </div>
+    </section>
+
+    <section class="function container" id="function">
+        <h2 class="title">五大核心治愈功能</h2>
+        <p class="sub-title">全方位缓解社交与容貌焦虑</p>
+        <div class="func-list">
+            <div class="func-card">
+                <h3>原生素颜记录</h3>
+                <p>无需美颜滤镜，直拍原生状态，直面真实样貌，慢慢摆脱容貌焦虑</p>
+            </div>
+            <div class="func-card">
+                <h3>平凡日常树洞</h3>
+                <p>分享三餐琐事、慵懒居家日常，不用营造精致人设，接纳平淡生活</p>
+            </div>
+            <div class="func-card">
+                <h3>反内卷治愈社区</h3>
+                <p>无颜值打分、无生活攀比，全员共情交流，消解社交带来的精神内耗</p>
+            </div>
+            <div class="func-card">
+                <h3>人设减负疏导</h3>
+                <p>内置松弛文案、情绪疏导指南，逐步摘下精装的社交面具</p>
+            </div>
+            <div class="func-card">
+                <h3>私密独处空间</h3>
+                <p>专属仅自己可见板块，自由释放情绪，不用迎合任何人眼光</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-ui" id="ui">
+        <div class="container">
+            <h2 class="title">APP主页UI整体布局</h2>
+            <p class="sub-title">简约清爽设计，风格自然舒适</p>
+            <img class="float-right-pic" src="https://picsum.photos/id/325/400/300" alt="户外随性瞬间抓拍">
+            <div class="ui-box">
+                <div class="ui-item">
+                    <h4>顶部导航区</h4>
+                    <p>简约栖心LOGO + 消息提醒 + 个人中心，无多余花哨装饰</p>
+                </div>
+                <div class="ui-item">
+                    <h4>首页核心顶部</h4>
+                    <p>今日松弛心情打卡，自由填写当下状态，简单轻松无压力</p>
+                </div>
+                <div class="ui-item">
+                    <h4>中部主内容区</h4>
+                    <p>真实生活动态广场+焦虑治愈短文推送，氛围温柔舒缓</p>
+                </div>
+                <div class="ui-item">
+                    <h4>快捷功能入口</h4>
+                    <p>素颜记录、树洞分享、治愈社区、情绪疏导四大直达入口</p>
+                </div>
+                <div class="ui-item">
+                    <h4>底部主导航栏</h4>
+                    <p>首页 / 记录 / 社区 / 我的 四栏极简布局，操作简洁易懂</p>
+                </div>
+                <div class="ui-item">
+                    <h4>整体视觉色调</h4>
+                    <p>奶白主色+浅灰柔色，低饱和护眼配色，全程营造松弛治愈氛围</p>
+                </div>
+            </div>
+            <div class="clear-float"></div>
+        </div>
+    </section>
+
+    <section class="download" id="download">
+        <div class="container">
+            <h2 class="title">即刻开启松弛自愈生活</h2>
+            <p>纯净无广告 · 极简轻量 · 全机型适配</p>
+            <a href="" class="btn-apple">App Store 抢先下载</a>
+            <p style="margin-top:15px;font-size:14px;color:#888;">安卓版本筹备上线中，敬请期待</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>栖心 RELAX © 2026 版权所有 | 专注缓解容貌焦虑与社交生活焦虑</p>
+        </div>
+    </footer>
+
+    <script>
+        // 页面平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+            anchor.addEventListener('click',function(e){
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+            });
+        });
+
+        // 轮播核心 1.5秒自动切换 + 手动翻页
+        const slideWrap = document.getElementById('slideWrap');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('prevBtn');
+        const slideWidth = 320;
+        let index = 0;
+        const total = 5;
+
+        function goSlide(){
+            slideWrap.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+        function nextSlide(){
+            index++;
+            if(index >= total) index = 0;
+            goSlide();
+        }
+        function prevSlide(){
+            index--;
+            if(index < 0) index = total - 1;
+            goSlide();
+        }
+
+        nextBtn.addEventListener('click',nextSlide);
+        prevBtn.addEventListener('click',prevSlide);
+        // 1500毫秒=1.5秒切换
+        let timer = setInterval(nextSlide,1500);
+        // 鼠标悬浮暂停轮播
+        slideWrap.parentElement.addEventListener('mouseenter',()=>clearInterval(timer));
+        slideWrap.parentElement.addEventListener('mouseleave',()=>timer=setInterval(nextSlide,1500));
+    </script>
+</body>
+</html>
